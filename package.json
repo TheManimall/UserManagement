@@ -1,5 +1,5 @@
 {
-  "name": "userManagment",
+  "name": "user-managment",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,6 +17,11 @@
     "mongoose": "^5.3.7"
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "nodemon": "^1.18.5"
   }
 }

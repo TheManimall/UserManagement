@@ -1,0 +1,60 @@
+Arguments: 
+  /usr/bin/node /usr/local/bin/yarn add redux-thunk
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  8.10.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/lobster/Lobster/code/bootcamp/userManagment/package.json: Unexpected token ￼ in JSON at position 646
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1136:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "user-managment",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "nodemon main.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "body-parse": "^0.1.0",
+      "body-parser": "^1.18.3",
+      "express": "^4.16.4",
+      "mongoose": "^5.3.7"
+    },
+    "devDependencies": {
+      "eslint-config-airbnb": "^17.1.0",
+      "eslint-config-airbnb-base": "^13.1.0",
+      "eslint-plugin-import": "^2.14.0",
+      "eslint-plugin-jsx-a11y": "^6.1.2",
+      "eslint-plugin-react": "^7.11.1",
+      "nodemon": "^1.18.5"
+    }
+  
+  ￼
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
