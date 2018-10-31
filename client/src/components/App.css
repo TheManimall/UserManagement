@@ -1,10 +1,18 @@
 body {
   background-color: #eee;
+  font-family: Roboto;
 }
 
 .App {
   text-align: center;
 }
+
+a {
+  color: #000;
+  text-decoration: none;
+  font-family: Roboto;
+}
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
