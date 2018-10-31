@@ -11,7 +11,8 @@ import * as serviceWorker from './serviceWorker';
 import App from './components/App';
 import mainReducer from './reducers/reducer';
 import { getAllData } from './actions/action';
-import UsersList from './containers/UserCont'
+import UsersList from './containers/UserList'
+import AddUser from './containers/AddUserCont';
 
 const store = createStore(
   mainReducer,
@@ -29,10 +30,11 @@ const providerDOM = (
   <Provider store={store}>
     <Router>
       <div>
-        <Route exact path='/' component={App} />
+        <Route path='/' component={App} />
         <Route path='/users' component={UsersList} />
+        <Route path='/add-user' component={AddUser} />
       </div>
-    </Router>
+    </Router> 
   </Provider>
 );
 render(

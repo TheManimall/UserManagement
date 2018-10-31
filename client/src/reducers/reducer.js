@@ -8,6 +8,16 @@ export const users = (state = { users:[] }, action) => {
         ...state,
         users: action.user,
       };
+    case types.ADD_USER:
+      return {
+        ...state,
+        users: state.users.concat(action.payload)
+      }
+    case types.DELETE_USER:
+      return {
+        ...state,
+        users: state.users.filter(user => user._id !== action.payload.id)
+      }
     default: {
       return {
         ...state,
