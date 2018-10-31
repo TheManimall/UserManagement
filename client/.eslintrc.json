@@ -1,0 +1,24 @@
+{
+    "extends": "airbnb",
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "react/prefer-stateless-function": "off",
+      "react/no-unescaped-entities": [
+        "error",
+        {
+          "forbid": [
+            ">",
+            "}"
+          ]
+        }
+      ]
+    }
+}
