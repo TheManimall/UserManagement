@@ -12,7 +12,8 @@ class User extends Component {
         <h2>{lastName}</h2>
         <h2>{phone}</h2>
         <Button 
-          variant="fab"  
+          variant="fab" 
+          aria-label="Delete" 
           onClick={(_id) => onDeleteUser(_id)}
         >
           <DeleteIcon />

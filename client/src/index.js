@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 import { createBrowserHistory } from 'history'
@@ -40,6 +39,18 @@ render(
   document.getElementById('root'),
 );
 
+// Hot reloading
+if (module.hot) {
+  // Reload components
+  module.hot.accept('./components/App', () => {
+    render()
+  })
+
+  // Reload reducers
+  module.hot.accept('./reducers/reducer', () => {
+    store.replaceReducer(connectRouter(history)(rootReducer))
+  })
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
