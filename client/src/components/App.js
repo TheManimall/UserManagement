@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-import User from './User';
+import UserList from '../containers/UserCont';
 
-class App extends Component {
-  render() {
-    return (
-      <User />
-    );
-  }
-}
+const App = () => (
+  <div className='container'>
+    <UserList />
+  </div>
+);
 
 
 export default App;

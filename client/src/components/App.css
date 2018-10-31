@@ -1,3 +1,7 @@
+body {
+  background-color: #eee;
+}
+
 .App {
   text-align: center;
 }
@@ -18,15 +22,20 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  margin: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
+
+

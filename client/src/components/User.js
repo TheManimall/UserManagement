@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import Card from '@material-ui/core/Card';
 
 class User extends Component {
-	componentDidMount() {
-		axios.get('/api/user')
-			.then(res => {
-				
-			})
-	}
-	render() { 
-  	return (
-			<h1>It's my user!</h1>
-		);
+  render() {
+    const {firstName, lastName, phone } = this.props;
+    return (
+      <Card className='card'>
+        <h2>{firstName}</h2>
+        <h2>{lastName}</h2>
+        <h2>{phone}</h2>
+      </Card>
+    );
   }
 }
- 
+
+
 export default User;
