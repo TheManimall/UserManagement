@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 app.use('/api/user', userRouter);
 app.use('/api/group', groupRouter);
 
-
 app.listen(port, (err) => {
   if (err) return console.warn(err);
 

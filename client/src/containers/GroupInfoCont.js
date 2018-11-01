@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import GroupInfo from '../components/GroupInfo';
+import { deleteGroup } from '../actions/action';
 
-const GroupInfoCont = ({ groups, match }) => {
+const GroupInfoCont = ({ groups, match, onDeleteGroup }) => {
   return (
     <div>
       {groups.map((group) => {
@@ -14,6 +15,7 @@ const GroupInfoCont = ({ groups, match }) => {
               group={group}
               groupName={group.groupName}
               id={group._id}
+              onDeleteGroup={onDeleteGroup}
             />
           );
         }
@@ -26,12 +28,10 @@ const mapStateToProps = (state) => ({
   groups: state.groups.groups,
 });
 
-/** const mapDispatchToProps = (dispatch) => {
-  return {
-    onDeleteUser: id => {
-      dispatch(deleteUser(`/user/${id}`));
-    }
-  };
-};**/
+const mapDispatchToProps = dispatch => ({
+  onDeleteGroup: (id) => {
+    dispatch(deleteGroup(id));
+  },
+});
 
-export default connect(mapStateToProps, null)(GroupInfoCont);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupInfoCont);

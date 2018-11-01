@@ -33,6 +33,16 @@ export const groups = (state = { groups: [] }, action) => {
         ...state,
         groups: action.group,
       };
+    case types.ADD_GROUP:
+      return {
+        ...state,
+        groups: state.groups.concat(action.payload)
+      }
+    case types.DELETE_GROUP:
+      return {
+        ...state,
+        groups: state.groups.filter(group => group._id !== action.payload.id)
+      }
     default: {
       return {
         ...state,
