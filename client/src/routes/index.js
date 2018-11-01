@@ -6,6 +6,8 @@ import NavBar from '../components/NavBar';
 import AddUser from '../containers/AddUserCont';
 import UserInfoCont from '../containers/UserInfoCont';
 import GroupList from '../containers/GroupList';
+import GroupInfoCont from '../containers/GroupInfoCont';
+import AddGroup from '../containers/AddGroupCont';
 
 
 const routes = (
@@ -17,6 +19,8 @@ const routes = (
       <Route path="/add-user" component={AddUser} />
       <Route path="/user/:id" component={UserInfoCont} />
       <Route path="/groups" component={GroupList} />
+      <Route path="/group/:id" component={GroupInfoCont} />
+      <Route path="/add-group" component={AddGroup} />
     </Switch>
   </div>
 );

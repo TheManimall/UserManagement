@@ -27,9 +27,7 @@ router.get('/:id', (req, res) => {
 
 //Add new group
 router.post('/', (req, res) => {
-  const newGroup = new Group({
-    groupName: 'Wild Group'
-  });
+  const newGroup = new Group(req.body);
 
   newGroup.save(err => {
     if (err) return console.warn(err);

@@ -33,6 +33,7 @@ class NewUser extends Component {
     this.setState({
       firstName: '',
       lastName: '',
+      selectedOption: null
     });
   };
 
