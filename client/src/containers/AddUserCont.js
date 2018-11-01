@@ -5,11 +5,18 @@ import NewUser from '../components/NewUser';
 
 class AddUserCont extends Component {
   render() { 
+    const { groups } = this.props;
     return (
-      <NewUser />
+      <NewUser
+        groups={groups} 
+      />
     );
   }
 }
+
+const mapStateToProps = state => ({
+  groups: state.groups.groups
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -20,6 +27,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect (
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NewUser);

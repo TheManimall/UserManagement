@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const GroupSchema = new Schema({
   groupName: String,
-  usersId: [String],
   createdAt: { type: Date, defaylt: Date.now }
 })
 

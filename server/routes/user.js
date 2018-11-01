@@ -26,13 +26,7 @@ router.get('/:id', (req, res) => {
 
 //Create new user
 router.post('/', (req, res) => {
-  const newUser = new User({
-    firstName: 'Steve',
-    lastName: 'Murdodd',
-    phoneNumber: 22234442,
-    groupsId: ['5bd77c9d70646d2317f1e844', '5bd77c9c70646d2317f1e843']
-  });
-
+  const newUser = new User(req.body);
   newUser.save(err => {
     if (err) return console.warn(err);
 
@@ -53,5 +47,10 @@ router.put('/:id', (req, res) => {
     })
   })
 })
+
+//Delete user by id
+router.delete('/', (req, res) => {
+  User.findById(req.body._id).remove().exec()
+});
 
 module.exports = router;

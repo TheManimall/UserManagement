@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
 
 class NewUser extends Component {
 
   state = {
     firstName: '',
-    lastName: ''
+    lastName: '',
+    groupId: [],
+    selectedOption: null
   };
+
+  handleSelectChange = (selectedOption) => {
+    this.setState({
+      selectedOption,
+      groupId: selectedOption.map(el => el.value)
+    });
+  }
 
   handleInputChange = e => {
     this.setState({
@@ -23,10 +33,21 @@ class NewUser extends Component {
     this.setState({
       firstName: '',
       lastName: '',
+      selectedOption: null
     });
   };
 
   render() { 
+    const { groups } = this.props;
+    const { groupId, selectedOption } = this.state
+
+    const options = groups.map((el) => {
+      return ({
+        value: el._id,
+        label: el.groupName,
+      });
+    })
+
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
@@ -45,6 +66,12 @@ class NewUser extends Component {
             onChange={this.handleInputChange}
             value={this.state.lastName}
             name='lastName'
+          />
+          <Select
+            isMulti 
+            value={selectedOption}
+            onChange={this.handleSelectChange}
+            options={options}
           />
           <input 
             type='submit'

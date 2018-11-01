@@ -31,6 +31,28 @@ export const addUserSuccess = data => {
   }
 };
 
+export const addGroup = ({ groupName }) => {
+  return (dispatch) => {
+    return axios.post('/api/group', { groupName })
+      .then(response => {
+        dispatch(addGroupSuccess(response.data))
+      })
+      .catch(error => {
+        throw (error)
+      })
+  }
+};
+
+export const addGroupSuccess = data => {
+  return {
+    type: types.ADD_GROUP,
+    payload: {
+      _id: data._id,
+      groupName: data.groupName,
+    }
+  }
+};
+
 export const deleteUser = id => {
   return (dispatch) => {
     return axios.delete(`/api/user/${id}`)
