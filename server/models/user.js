@@ -5,7 +5,7 @@ const UserSchema = new Schema({
   firstName: String,
   lastName: String,
   phoneNumber: Number,
-  groupsId: [String],
+  groupId: [String],
   createdAt: { type: Date, default: Date.now }
 });
 

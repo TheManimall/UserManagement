@@ -5,6 +5,7 @@ import UsersList from '../containers/UserList';
 import NavBar from '../components/NavBar';
 import AddUser from '../containers/AddUserCont';
 import UserInfoCont from '../containers/UserInfoCont';
+import GroupList from '../containers/GroupList';
 
 
 const routes = (
@@ -15,6 +16,7 @@ const routes = (
       <Route path="/users" component={UsersList} />
       <Route path="/add-user" component={AddUser} />
       <Route path="/user/:id" component={UserInfoCont} />
+      <Route path="/groups" component={GroupList} />
     </Switch>
   </div>
 );

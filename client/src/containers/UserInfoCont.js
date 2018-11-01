@@ -14,6 +14,7 @@ const UserInfoCont = ({ users, match }) => {
               user = {user}
               firstName = {user.firstName}
               lastName = {user.lastName}
+              groupId = {user.groupId}
             />
           );
         }
@@ -23,7 +24,7 @@ const UserInfoCont = ({ users, match }) => {
 };
 
 const mapStateToProps = (state) => ({
-  users: state.users.users
+  users: state.users.users,
 });
 
 /** const mapDispatchToProps = (dispatch) => {
