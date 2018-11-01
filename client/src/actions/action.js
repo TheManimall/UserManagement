@@ -89,3 +89,21 @@ export const getAllData = () => async (dispatch) => {
     throw (err);
   }
 };
+
+export const getUsersData = () => async (dispatch) => {
+  try {
+    const resUser = await axios.get('/api/user');
+    dispatch(getUser(resUser.data));
+  } catch (err) {
+    throw (err);
+  }
+};
+
+export const getGroupsData = () => async (dispatch) => {
+  try {
+    const resGroup = await axios.get('/api/group');
+    dispatch(getGroup(resGroup.data));
+  } catch (err) {
+    throw (err);
+  }
+};

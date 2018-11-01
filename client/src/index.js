@@ -25,7 +25,7 @@ const store = createStore(
   ),
 )
 
-store.dispatch(getAllData());
+//store.dispatch(getAllData());
 
 const providerDOM = (
   <Provider store={store}>
