@@ -50,4 +50,18 @@ router.put('/:id', (req, res) => {
   })
 })
 
+//Delete group by id
+router.delete('/', (req, res) => {
+  Group.findByIdAndRemove(req.body._id, (err, group) => {
+    if (err) return res.status(500).send(err);
+
+    const response = {
+      message: 'Group successfully deleted',
+      id: group._id
+    }
+
+    return res.status(200).send(response);
+  });
+});
+
 module.exports = router;

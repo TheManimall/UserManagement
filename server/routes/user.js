@@ -50,7 +50,16 @@ router.put('/:id', (req, res) => {
 
 //Delete user by id
 router.delete('/', (req, res) => {
-  User.findById(req.body._id).remove().exec()
+  User.findByIdAndRemove(req.body._id, (err, user) => {
+    if(err) return res.status(500).send(err);
+
+    const response = {
+      message: 'User successfully deleted',
+      id: user._id
+    }
+
+    return res.status(200).send(response);
+  });
 });
 
 module.exports = router;
