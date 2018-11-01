@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import UserInfo from '../components/UserInfo';
 
-const UserInfoCont = ({ users, params }) => {
+const UserInfoCont = ({ users, match }) => {
   return(
     <div>
-      {users.filter((user) => {
-        if (user._id === params.get('id')){
+      {users.map((user) => {
+        if (user._id === match.params.id) {
           return(
             <UserInfo 
               key = {user._id}
@@ -26,4 +26,12 @@ const mapStateToProps = (state) => ({
   users: state.users.users
 });
 
-export default connect(mapStateToProps, null)(UserInfo);
+/** const mapDispatchToProps = (dispatch) => {
+  return {
+    onDeleteUser: id => {
+      dispatch(deleteUser(`/user/${id}`));
+    }
+  };
+};**/
+
+export default connect(mapStateToProps, null)(UserInfoCont);

@@ -10,7 +10,7 @@ export default ({ user: { firstName, lastName, phone, _id }, routInfoUser }) => 
       <h2>{lastName}</h2>
       <h2>{phone}</h2>
       <h4>{_id}</h4>
-      <Link to={{ pathname: "/user", search: `id=${_id}` }}>
+      <Link to={`/user/${_id}`}>
         <Button variant="contained">Show more</Button>
       </Link>
     </Card>
