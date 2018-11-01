@@ -1,46 +1,56 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { createLogger } from 'redux-logger';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import * as reduxDevtoolsExtension from 'redux-devtools-extension';
 import * as serviceWorker from './serviceWorker';
+import { createBrowserHistory } from 'history'
+import { applyMiddleware, compose, createStore } from 'redux'
+import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router'
 
 import App from './components/App';
-import mainReducer from './reducers/reducer';
+import rootReducer from './reducers/reducer';
 import { getAllData } from './actions/action';
-import UsersList from './containers/UserList'
-import AddUser from './containers/AddUserCont';
+
+const history = createBrowserHistory()
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  mainReducer,
-  reduxDevtoolsExtension.composeWithDevTools(applyMiddleware(thunk)),
-);
-
-const middleware = [thunk];
-if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
-}
+  connectRouter(history)(rootReducer),
+  composeEnhancer(
+    applyMiddleware(
+      routerMiddleware(history),
+      thunk
+    ),
+  ),
+)
 
 store.dispatch(getAllData());
 
 const providerDOM = (
   <Provider store={store}>
-    <Router>
-      <div>
-        <Route path='/' component={App} />
-        <Route path='/users' component={UsersList} />
-        <Route path='/add-user' component={AddUser} />
-      </div>
-    </Router> 
+    <ConnectedRouter history={history}>
+      <App history={history} />
+    </ConnectedRouter> 
   </Provider>
 );
 render(
   providerDOM,
   document.getElementById('root'),
 );
+
+// Hot reloading
+if (module.hot) {
+  // Reload components
+  module.hot.accept('./components/App', () => {
+    render()
+  })
+
+  // Reload reducers
+  module.hot.accept('./reducers/reducer', () => {
+    store.replaceReducer(connectRouter(history)(rootReducer))
+  })
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

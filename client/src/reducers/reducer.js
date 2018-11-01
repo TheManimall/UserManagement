@@ -41,9 +41,9 @@ export const groups = (state = { groups: [] }, action) => {
   }
 };
 
-const mainReducer = combineReducers({
+const rootReducer = combineReducers({
   users,
   groups
 });
 
-export default mainReducer;
+export default rootReducer;
