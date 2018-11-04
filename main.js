@@ -5,9 +5,8 @@ const bodyParser = require('body-parser');
 const userRouter = require('./server/routes/user');
 const groupRouter = require('./server/routes/group');
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5050;
 const app = express();
-
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));

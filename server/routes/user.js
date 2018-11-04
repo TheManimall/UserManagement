@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
 const User = require('../models/user');
 
@@ -15,9 +17,9 @@ router.get('/', (req, res) => {
 
 });
 
-//Get users by id
+//Get user by id
 router.get('/:id', (req, res) => {
-  User.findById(req.params.id).exec((err, records) => {
+  User.findById({_id: req.params.id}).exec((err, records) => {
     if (err) return console.warn(err);
 
     res.send(records)
@@ -34,27 +36,65 @@ router.post('/', (req, res) => {
   })
 });
 
-//Update user by id
-router.put('/:id', (req, res) => {
-  User.findById(req.params.id).exec((err, records) => {
-    if (err) return console.warn(err);
-
-    records.set({lastName: 'Killcats'});
-    records.save((err, updateUser) => {
+//Add user to group 
+router.put('/', (req, res) => {
+  User.findByIdAndUpdate(
+    new mongoose.Types.ObjectId(req.body.userId.value), 
+    {$push: { groupId: req.body.groupId }},
+    {new: true },
+    (err, records) => {
       if (err) return console.warn(err);
 
-      res.send(updateUser);
-    })
-  })
-})
+      return res.status(200).send(records);
+    });
+});
+
+//remove user from group 
+router.put('/remove', (req, res) => {
+  User.findByIdAndUpdate(
+    new mongoose.Types.ObjectId(req.body.userId), 
+    { $pull: { groupId: req.body.groupId } },
+    (err, records) => {
+      if (err) return console.warn(err);
+
+      return res.status(200).send(records);
+    });
+});
+
+//
 
 //Delete user by id
 router.get('/delete/:id', (req, res) => {
-  User.findByIdAndRemove({_id: req.params.id}, (err, user) => {
+  User.findByIdAndRemove({_id: req.params.id }, (err, user) => {
     if (err) return console.warn(err);
     
     return res.status(200).send(user.id);
   });
 });
+
+//remove group from users
+router.put('/remove-group/:id', (req, res) => {
+  User.update(
+    {},
+    { $pull: { groupId: req.params.id } },
+    {multi: true},
+    (err, records) => {
+      if (err) return console.warn(err);
+
+      return res.status(200).send(records);
+    });
+});
+
+
+//Get users by id group
+router.get('/get-by-id/:id', (req, res) => {
+  console.log(req.params.id);
+User.find({ groupId: req.params.id}, (err, users) => {
+    if (err) return console.warn(err);
+
+    return res.status(200).send(users);
+  });
+});
+
 
 module.exports = router;

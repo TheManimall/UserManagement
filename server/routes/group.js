@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
 
 const Group = require('../models/group');
 
@@ -13,7 +14,6 @@ router.get('/', (req, res) => {
     console.log(records);
     res.send(records);
   })
-
 });
 
 //Get groups by id
@@ -56,6 +56,17 @@ router.get('/delete/:id', (req, res) => {
     if (err) return console.warn(err);
 
     return res.status(200).send(group.id);
+  });
+});
+
+//Get groups by id
+router.get('/get-by-id/:id', (req, res) => {  
+  let arrId = req.params.id.split('&')
+  let arrObjId = arrId.map(el => new mongoose.Types.ObjectId(el))
+  Group.find({ _id: {$in: arrObjId}}, (err, groups) => {
+    if (err) return console.warn(err);
+
+    return res.status(200).send(groups);
   });
 });
 

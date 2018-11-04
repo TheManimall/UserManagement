@@ -7,6 +7,7 @@ export const getUser = res => ({
   user: res,
 });
 
+//add user
 export const addUserSuccess = data => ({
   type: types.ADD_USER,
   payload: {
@@ -17,6 +18,7 @@ export const addUserSuccess = data => ({
   },
 });
 
+
 export const addUser = ({ firstName, lastName, groupId }) => dispatch => axios.post('/api/user', { firstName, lastName, groupId })
   .then((response) => {
     dispatch(addUserSuccess(response.data));
@@ -24,6 +26,7 @@ export const addUser = ({ firstName, lastName, groupId }) => dispatch => axios.p
   .catch((error) => {
     throw (error);
   });
+//end
 
 export const addGroupSuccess = data => ({
   type: types.ADD_GROUP,
@@ -68,16 +71,13 @@ export const deleteGroupSuccess = id => ({
 export const deleteGroup = id => async (dispatch) => {
   try {
     const response = await axios.get(`/api/group/delete/${id}`);
+    const resUser = await axios.put(`api/user/remove-group/${id}`);
     dispatch(deleteGroupSuccess(response.data));
   } catch (error) {
     throw (error);
   }
 };
 
-export const getGroup = res => ({
-  type: types.GET_GROUP,
-  group: res,
-});
 
 export const getUsersData = () => async (dispatch) => {
   try {
@@ -88,11 +88,117 @@ export const getUsersData = () => async (dispatch) => {
   }
 };
 
-export const getGroupsData = () => async (dispatch) => {
+//get all groups
+
+export const getAllGroupSuccess = res => ({
+  type: types.GET_GROUP,
+  group: res,
+});
+
+export const getAllGroup = () => async (dispatch) => {
   try {
     const resGroup = await axios.get('/api/group');
-    dispatch(getGroup(resGroup.data));
+    dispatch(getAllGroupSuccess(resGroup.data));
   } catch (err) {
     throw (err);
   }
 };
+
+//end
+
+export const getUserByIdSuccess = user => ({
+  type: types.GET_USER_BY_ID,
+  user,
+});
+
+//save this :)
+export const getUserById = id => async (dispatch) => {
+  try {
+    const response = await axios.get(`/api/user/${id}`);
+    dispatch(getUserByIdSuccess(response.data));
+  } catch (error) {
+    throw (error);
+  }
+};
+
+//Get user info
+
+export const getUserInfoSuccess = (user, group) => ({
+  type: types.GET_USER_INFO,
+  user,
+  group
+});
+
+
+export const getUserInfo = id => async (dispatch) => {
+  try {
+    const resUser = await axios.get(`/api/user/${id}`);
+    const arrId = resUser.data.groupId;
+    const urlString = arrId.join('&');
+    const resGroup = await axios.get(`/api/group/get-by-id/${urlString}`);
+    dispatch(getUserInfoSuccess(resUser.data, resGroup.data));
+  } catch (error) {
+    throw (error);
+  }
+};
+
+//end
+
+//get group info
+
+export const getGroupInfoSuccess = (group, user) => ({
+  type: types.GET_GROUP_INFO,
+  group,
+  user,
+});
+
+export const getGroupInfo = id => async (dispatch) => {
+  try {
+    const resGroup = await axios.get(`/api/group/${id}`);
+    const resUser = await axios.get(`/api/user/`);
+    dispatch(getGroupInfoSuccess(resGroup.data, resUser.data));
+  } catch (error) {
+    throw (error);
+  }
+};
+
+export const getGroupByIdSuccess = group => ({
+  type: types.GET_GROUP_BY_ID,
+  group,
+});
+
+//end
+
+
+//add user to group
+export const addUserToGroupSuccess = user => ({
+  type: types.ADD_USER_TO_GROUP,
+  user,
+})
+
+export const addUserToGroup = ({ userId, groupId }) => async (dispatch) => {
+  try {
+    const res = await axios.put('/api/user/', { userId, groupId });
+    dispatch(addUserToGroupSuccess(res.data));
+  } catch (error) {
+    throw (error);
+  }
+};
+
+//end
+
+//remove user from group
+export const removeUserFromGroupSuccess = user => ({
+  type: types.REMOVE_USER_FROM_GROUP,
+  user,
+})
+
+export const removeUserFromGroup = ({ userId, groupId}) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/user/remove`, { userId, groupId});
+    dispatch(removeUserFromGroupSuccess(res.data));
+  } catch (error) {
+    throw (error);
+  }
+};
+//
