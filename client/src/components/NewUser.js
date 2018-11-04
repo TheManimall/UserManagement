@@ -25,6 +25,7 @@ class NewUser extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state);
     this.props.onAddUser(this.state);
     this.handleReset();
   };
@@ -38,10 +39,10 @@ class NewUser extends Component {
   };
 
   render() { 
-    const { groups } = this.props;
+    const { group } = this.props;
     const { groupId, selectedOption } = this.state
 
-    const options = groups.map((el) => {
+    const options = group.map((el) => {
       return ({
         value: el._id,
         label: el.groupName,

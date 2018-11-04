@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import Group from '../components/Group';
-import { getGroupsData } from '../actions/action';
+import { getAllGroup, deleteGroup } from '../actions/action';
 
 class GroupList extends Component {
 
@@ -10,16 +11,17 @@ class GroupList extends Component {
   }
   
   render() { 
-    const { groups } = this.props;
+    const { group, onDeleteGroup } = this.props;
     return ( 
       <div className='container'>
-        {groups.map((group) => {
+        {group.map((el) => {
           return (
             <Group
-              group={group}
-              key={group._id}
-              groupName={group.groupName}
-              _id={group._id}
+              group={el}
+              key={el._id}
+              groupName={el.groupName}
+              _id={el._id}
+              onDeleteGroup={onDeleteGroup}
             />
           );
         })}
@@ -29,13 +31,16 @@ class GroupList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  groups: state.groups.groups
+  group: state.getAllGroup.group
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getGroups: () => {
-      dispatch(getGroupsData());
+      dispatch(getAllGroup());
+    },
+    onDeleteGroup: (id) => {
+      dispatch(deleteGroup(id))
     }
   }
 };

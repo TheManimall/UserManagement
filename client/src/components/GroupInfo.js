@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
-const GroupInfo = ({ group: { groupName, _id, createdAt }, onDeleteGroup }) => (
-  <div>
-    <h2>{groupName}</h2>
-    <h3>{_id}</h3>
-    <h3>{createdAt}</h3>
-    <Link to={'/groups'}>
-      <Button
-        variant="outlined"
-        color="secondary"
-        onClick={() => onDeleteGroup(_id)}
-      >
-        Delete
+class GroupInfo extends Component {
+  render() { 
+    const { groupName, id, onDeleteGroup } = this.props;
+    return (
+      <div>
+        <h2>{groupName}</h2>
+        <h3>{id}</h3>
+        <Link to={'/groups'}>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => onDeleteGroup(id)}
+          >
+            Delete
       </Button>
-    </Link>
-  </div>
-);
+        </Link>
+      </div>
+    );
+  }
+}
+
 
 export default GroupInfo;

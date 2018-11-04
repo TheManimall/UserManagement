@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 
-export default ({ group: { groupName, _id }}) => {
+export default ({ group: { groupName, _id }, onDeleteGroup }) => {
   return (
     <Card className='card'>
       <h2>{groupName}</h2>
@@ -11,6 +11,12 @@ export default ({ group: { groupName, _id }}) => {
       <Link to={`/group/${_id}`}>
         <Button variant="contained">Show more</Button>
       </Link>
+      <Button 
+        variant="contained"
+        onClick={() => onDeleteGroup(_id)}
+      >
+        Delete
+      </Button>
     </Card>
   );
 };
