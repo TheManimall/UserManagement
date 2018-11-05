@@ -61,22 +61,22 @@ class AddUserComponent extends Component {
       <div className="container">
         <Card className="add-user">
           <form onSubmit={this.handleSubmit}>
-              <TextField
-                label="First Name"
-                margin="dense"
-                className="input-user"
-                name='firstName'
-                onChange={this.handleInputChange}
-                value={this.state.firstName}
-              />
-              <TextField
-                label="Last Name"
-                margin="dense"
-                name='lastName'
-                className="input-user"
-                onChange={this.handleInputChange}
-                value={this.state.lastName}
-              />
+            <TextField
+              label="First Name"
+              margin="dense"
+              className="input-user"
+              name='firstName'
+              onChange={this.handleInputChange}
+              value={this.state.firstName}
+            />
+            <TextField
+              label="Last Name"
+              margin="dense"
+              name='lastName'
+              className="input-user"
+              onChange={this.handleInputChange}
+              value={this.state.lastName}
+            />
             <Select
               isMulti
               value={selectedOption}

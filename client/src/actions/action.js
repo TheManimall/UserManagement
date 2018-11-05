@@ -111,7 +111,7 @@ export const getUserByIdSuccess = user => ({
   user,
 });
 
-//save this :)
+//get user by id :)
 export const getUserById = id => async (dispatch) => {
   try {
     const response = await axios.get(`/api/user/${id}`);
