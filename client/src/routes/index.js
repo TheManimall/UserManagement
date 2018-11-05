@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import UsersList from '../containers/UserList';
+import UsersList from '../User/UserList';
 import NavBar from '../components/NavBar';
 import AddUser from '../containers/AddUserCont';
 import UserInfoCont from '../containers/UserInfoCont';

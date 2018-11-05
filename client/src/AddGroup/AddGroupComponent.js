@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
 
-class NewGroup extends Component {
+class AddGroupComponent extends Component {
 
   state = {
     groupName: '',
@@ -46,4 +45,4 @@ class NewGroup extends Component {
   }
 }
 
-export default NewGroup;
+export default AddGroupComponent;

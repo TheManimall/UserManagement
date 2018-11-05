@@ -2,27 +2,27 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import UsersList from '../containers/UserList';
-import NavBar from './NavBar';
-import AddUser from '../containers/AddUserCont';
+import UserContainer from '../User/UserContainer';
+import NavBar from '../NavBar/NavBar';
+import AddUserContainer from '../AddUser/AddUserContainer';
 import UserInfoCont from '../containers/UserInfoCont';
-import GroupList from '../containers/GroupList';
+import GroupContainer from '../Group/GroupContainer';
 import GroupInfoCont from '../containers/GroupInfoCont';
-import AddGroup from '../containers/AddGroupCont';
+import AddGroupComponent from '../AddGroup/AddGroupComponent';
 
 const App = () => {
   return (
-    <div>
-    <NavBar />
-    <Switch>
-      <Route exact path="/" component={NavBar} />
-      <Route path="/users" component={UsersList} />
-      <Route path="/add-user" component={AddUser} />
-      <Route path="/user/:id" component={UserInfoCont} />
-      <Route path="/groups" component={GroupList} />
-      <Route path="/group/:id" component={GroupInfoCont} />
-      <Route path="/add-group" component={AddGroup} />
-    </Switch>
+    <div className="main-cont">
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={UserContainer} />
+        <Route path="/users" component={UserContainer} />
+        <Route path="/add-user" component={AddUserContainer} />
+        <Route path="/user/:id" component={UserInfoCont} />
+        <Route path="/groups" component={GroupContainer} />
+        <Route path="/group/:id" component={GroupInfoCont} />
+        <Route path="/add-group" component={AddGroupComponent} />
+      </Switch>
     </div>
   );
 };

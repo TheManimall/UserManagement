@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addGroup } from '../actions/action';
-import NewGroup from './NewGroup';
+import AddGroupComponent from './AddGroupComponent';
 
-class AddGroupCont extends Component {
+class AddGroupContainer extends Component {
   render() {
     return (
-      <NewGroup />
+      <AddGroupComponent />
     );
   }
 }
@@ -15,11 +15,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAddGroup: (group) => {
       dispatch(addGroup(group));
-    }
+    };
   }
 };
 
 export default connect(
   null,
   mapDispatchToProps
-)(NewGroup);
+)(AddGroupComponent);

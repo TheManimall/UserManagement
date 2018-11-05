@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 
-class NewUser extends Component {
+class AddUserComponent extends Component {
 
   state = {
     firstName: '',
@@ -83,4 +83,4 @@ class NewUser extends Component {
   }
 }
  
-export default NewUser;
+export default AddUserComponent;
