@@ -5,21 +5,22 @@ import AddGroupComponent from './AddGroupComponent';
 
 class AddGroupContainer extends Component {
   render() {
+    const { onAddGroup } = this.props;
     return (
-      <AddGroupComponent />
+      <AddGroupComponent
+        onAddGroup={onAddGroup}
+      />
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAddGroup: (group) => {
-      dispatch(addGroup(group));
-    };
-  }
-};
+const mapDispatchToProps = dispatch => ({
+  onAddGroup: (group) => {
+    dispatch(addGroup(group));
+  },
+});
 
 export default connect(
   null,
-  mapDispatchToProps
-)(AddGroupComponent);
+  mapDispatchToProps,
+)(AddGroupContainer);

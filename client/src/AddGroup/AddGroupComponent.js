@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 class AddGroupComponent extends Component {
 
@@ -26,21 +29,27 @@ class AddGroupComponent extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
+        <Card className="add-user">
         <form onSubmit={this.handleSubmit}>
-          <label>group name:</label>
-          <input
-            className='name_input'
-            type='text'
-            onChange={this.handleInputChange}
-            value={this.state.groupName}
-            name='groupName'
-          />
-          <input
-            type='submit'
-          />
+            <TextField
+              label="Group Name"
+              margin="dense"
+              className="input-user"
+              onChange={this.handleInputChange}
+              value={this.state.groupName}
+              name='groupName'
+            />
+            <Button
+              variant="contained"
+              type="submit"
+              color="secondary"
+              size="medium">
+              Add
+            </Button>
         </form>
-      </React.Fragment>
+        </Card>
+      </div>
     );
   }
 }
