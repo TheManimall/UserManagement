@@ -1,9 +1,9 @@
 User Managment 
 
 What you need:
--MongoDB
--Node.js
--npm
+  - MongoDB 
+  - Node.js
+  - npm
 
 Installing:
 
