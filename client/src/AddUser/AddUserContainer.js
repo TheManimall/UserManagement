@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { addUser, getAllGroup } from '../actions/action';
-import NewUser from '../components/NewUser';
+import AddUserComponent from './AddUserComponent';
 
-class AddUserCont extends Component {
+class AddUserContainer extends Component {
   componentDidMount() {
     const { getGroup } = this.props;
 
@@ -15,7 +15,7 @@ class AddUserCont extends Component {
     const { group, onAddUser } = this.props;
 
     return (
-      <NewUser
+      <AddUserComponent
         group={group}
         onAddUser={onAddUser} 
       />
@@ -41,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect (
   mapStateToProps,
   mapDispatchToProps
-)(AddUserCont);
+)(AddUserContainer);

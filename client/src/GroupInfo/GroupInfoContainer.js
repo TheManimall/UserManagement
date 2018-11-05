@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Card from '@material-ui/core/Card';
 
-import GroupInfo from '../components/GroupInfo';
-import AddUserToGroup from '../components/AddUserToGroup';
+import GroupInfoComponent from './GroupInfoComponent';
+import AddUserToGroup from './AddUserToGroup';
 import { deleteGroup, getGroupInfo, addUserToGroup, removeUserFromGroup } from '../actions/action';
+import UserListComponent from './UserListComponent';
 
-class GroupInfoCont extends Component {
+class GroupInfoContainer extends Component {
   componentDidMount() {
     const { getGroup, match } = this.props;
     const gId = match.params.id;
@@ -28,29 +30,31 @@ class GroupInfoCont extends Component {
     };
 
     return (
-      <React.Fragment>
-        <GroupInfo
-          groupName={group.groupName}
-          id={group._id}
-          onDeleteGroup={onDeleteGroup}
-        />
-        {userInGroup.map(el => (
-          <div>
-            <h2 key={el._id}>{`${el.firstName} ${el.lastName}`}</h2>
-            <button
-              key={el._id}
-              onClick={() => removeUser(remove(el._id))}
-            >
-              del
-            </button>
+      <div className="container">
+        <Card className="group-info-page">
+          <GroupInfoComponent
+            groupName={group.groupName}
+            id={group._id}
+            onDeleteGroup={onDeleteGroup}
+          />
+          <AddUserToGroup
+            user={user}
+            onAddUserToGroup={onAddUserToGroup}
+            id={group._id}
+          />
+          <div className="group-list">
+            {userInGroup.map(el => (
+              <UserListComponent
+                key={el._id}
+                fullName={`${el.firstName} ${el.lastName}`}
+                id={el._id}
+                remove={remove}
+                removeUser={removeUser}
+              />
+            ))}
           </div>
-        ))}
-        <AddUserToGroup
-          user={user}
-          onAddUserToGroup={onAddUserToGroup}
-          id={group._id}
-        />
-      </React.Fragment>
+        </Card>
+      </div>
     );
   }
 }
@@ -76,4 +80,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(GroupInfoCont);
+export default connect(mapStateToProps, mapDispatchToProps)(GroupInfoContainer);

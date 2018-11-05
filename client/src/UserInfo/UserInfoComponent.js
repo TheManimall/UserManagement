@@ -2,26 +2,26 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 
-class UserInfo extends Component {
+class UserInfoComponent extends Component {
   render() {
-    const { firstName, lastName, createdAt, groupId, onDeleteUser, id } = this.props; 
+    const { firstName, lastName, createdAt, onDeleteUser, id } = this.props; 
     return (
-      <div>
+      <div className="user">
         <h3>{firstName}</h3>
         <h3>{lastName}</h3>
         <h3>{createdAt}</h3>
         <Link to={'/users'}>
-          <Button
+          <Button 
             variant="outlined"
             color="secondary"
             onClick={() => onDeleteUser(id)}
           >
             Delete
-      </Button>
+          </Button>
         </Link>
       </div>
     );
   }
 }
- 
-export default UserInfo;
+
+export default UserInfoComponent;

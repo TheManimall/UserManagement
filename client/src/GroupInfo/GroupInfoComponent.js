@@ -6,9 +6,8 @@ class GroupInfo extends Component {
   render() { 
     const { groupName, id, onDeleteGroup } = this.props;
     return (
-      <div>
+      <div className='group-info-component'>
         <h2>{groupName}</h2>
-        <h3>{id}</h3>
         <Link to={'/groups'}>
           <Button
             variant="outlined"

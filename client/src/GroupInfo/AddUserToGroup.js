@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import Button from '@material-ui/core/Button';
 
 class AddUserToGroup extends Component {
 
@@ -40,18 +41,22 @@ class AddUserToGroup extends Component {
     });
 
     return (
-      <React.Fragment>
+      <div className="add-in-group">
         <form onSubmit={this.handleSubmit}>
           <Select
             value={userId}
             onChange={this.handleSelectChange}
             options={options}
           />
-          <input
-            type='submit'
-          />
+          <Button
+            variant="contained"
+            type="submit"
+            color="secondary"
+            size="medium">
+            Add
+            </Button>
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }

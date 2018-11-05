@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { deleteUser, getUsersData } from '../actions/action';
-import User from '../components/User';
+import User from './User';
 
 class UserList extends Component {
   componentDidMount() {
