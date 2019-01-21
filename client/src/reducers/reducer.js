@@ -87,7 +87,7 @@ export const groupInfo = (state = { group: {}, user: [], userInGroup: [] }, acti
         ...state,
         user: state.user.concat(action.user),
         userInGroup: state.userInGroup.filter(el => !action.user._id.includes(el._id)),
-      }
+      };
     default: {
       return {
         ...state,

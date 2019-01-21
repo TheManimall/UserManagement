@@ -44,7 +44,7 @@ class UserInfoContainer extends Component {
 
 const mapStateToProps = state => ({
   user: state.userInfo.user,
-  group: state.userInfo.group, 
+  group: state.userInfo.groups, 
 });
 
 const mapDispatchToProps = dispatch => ({

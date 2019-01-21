@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addUser, getAllGroup } from '../actions/action';
+//import { addUser } from '../actions/action';
+import { addUserOperations }  from './duck';
+import { groupOperations } from '../Group/duck';
 import AddUserComponent from './AddUserComponent';
 
 class AddUserContainer extends Component {
@@ -17,28 +19,28 @@ class AddUserContainer extends Component {
     return (
       <AddUserComponent
         group={group}
-        onAddUser={onAddUser} 
+        onAddUser={onAddUser}
       />
     );
   }
 }
 
+console.log(addUserOperations);
+
 const mapStateToProps = state => ({
-  group: state.getAllGroup.group
-})
+  group: state.group.groups,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAddUser: (user) => {
-      dispatch(addUser(user));
-    },
-    getGroup: () => {
-      dispatch(getAllGroup());
-    },
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onAddUser: (user) => {
+    dispatch(addUserOperations.addUser(user));
+  },
+  getGroup: () => {
+    dispatch(groupOperations.getAllGroup());
+  },
+});
 
-export default connect (
+export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AddUserContainer);
