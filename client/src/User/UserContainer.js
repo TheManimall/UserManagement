@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { deleteUser, getUsersData } from '../actions/action';
+import { userOperations } from './duck';
 import UserComponent from './UserComponent';
 
 class UserContainer extends Component {
@@ -37,15 +37,15 @@ class UserContainer extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getUsers: () => {
-    dispatch(getUsersData());
+    dispatch(userOperations.getUsersData());
   },
   onDeleteUser: (id) => {
-    dispatch(deleteUser(id));
+    dispatch(userOperations.deleteUser(id));
   },
 });
 
 const mapStateToProps = state => ({
-  user: state.users.users,
+  user: state.user.users,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserContainer);

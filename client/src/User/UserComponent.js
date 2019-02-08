@@ -13,9 +13,10 @@ class UserComponent extends Component {
     } = this.props;
     return (
       <Card className="user-card">
-        <div className="user-info">
+        <div className="user-number">
           <h4>{i}</h4>
-          <h2>{nickname}</h2>
+        </div>
+        <div className="user-info">
           <h3>{firstName}</h3>
           <h3>{lastName}</h3>
         </div>

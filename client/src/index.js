@@ -6,7 +6,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App';
-import rootReducer from './reducers/reducer';
+import rootReducer from './reducer';
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

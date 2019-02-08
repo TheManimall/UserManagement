@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import GroupComponent from './GroupComponent';
-import { getAllGroup, deleteGroup } from '../actions/action';
+import { groupOperations } from './duck';
 
 class GroupContainer extends Component {
   componentDidMount() {
@@ -10,11 +10,11 @@ class GroupContainer extends Component {
   }
 
   render() {
-    const { group, onDeleteGroup } = this.props;
+    const { groups, onDeleteGroup } = this.props;
     let i = 0;
     return (
       <div className="container">
-        {group.map((el) => {
+        {groups.map((el) => {
           i++;
           return (
             <GroupComponent
@@ -33,15 +33,15 @@ class GroupContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  group: state.getAllGroup.group,
+  groups: state.group.groups,
 });
 
 const mapDispatchToProps = dispatch => ({
   getGroups: () => {
-    dispatch(getAllGroup());
+    dispatch(groupOperations.getAllGroup());
   },
   onDeleteGroup: (id) => {
-    dispatch(deleteGroup(id));
+    dispatch(groupOperations.deleteGroup(id));
   },
 });
 

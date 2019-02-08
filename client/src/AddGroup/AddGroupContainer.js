@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addGroup } from '../actions/action';
+
+import { addGroupOperations } from './duck';
 import AddGroupComponent from './AddGroupComponent';
 
 class AddGroupContainer extends Component {
@@ -14,9 +15,12 @@ class AddGroupContainer extends Component {
   }
 }
 
+console.log(addGroupOperations);
+
+
 const mapDispatchToProps = dispatch => ({
   onAddGroup: (group) => {
-    dispatch(addGroup(group));
+    dispatch(addGroupOperations.addGroup(group));
   },
 });
 

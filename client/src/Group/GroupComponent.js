@@ -10,8 +10,10 @@ class GroupComponent extends Component {
     const { groupName, id, onDeleteGroup, i } = this.props;
     return (
       <Card className="user-card">
-        <div className="user-info">
+        <div className="user-number">
           <h4>{i}</h4>
+        </div>
+        <div className="user-info">
           <h2>{groupName}</h2>
         </div>
         <div className="user-button">

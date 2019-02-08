@@ -1,0 +1,4 @@
+const GET_GROUP = 'GET_GROUP';
+const DELETE_GROUP = 'DELETE_GROUP';
+export default { GET_GROUP, DELETE_GROUP };
+

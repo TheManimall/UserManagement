@@ -4,7 +4,8 @@ import Card from '@material-ui/core/Card';
 
 import GroupInfoComponent from './GroupInfoComponent';
 import AddUserToGroup from './AddUserToGroup';
-import { deleteGroup, getGroupInfo, addUserToGroup, removeUserFromGroup } from '../actions/action';
+import { groupInfoOperations } from './duck';
+import { groupOperations } from '../Group/duck';
 import UserListComponent from './UserListComponent';
 
 class GroupInfoContainer extends Component {
@@ -67,16 +68,16 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onDeleteGroup: (id) => {
-    dispatch(deleteGroup(id));
+    dispatch(groupOperations.deleteGroup(id));
   },
   getGroup: (id) => {
-    dispatch(getGroupInfo(id));
+    dispatch(groupInfoOperations.getGroupInfo(id));
   },
   onAddUserToGroup: (id) => {
-    dispatch(addUserToGroup(id));
+    dispatch(groupInfoOperations.addUserToGroup(id));
   },
   removeUser: (id) => {
-    dispatch(removeUserFromGroup(id));
+    dispatch(groupInfoOperations.removeUserFromGroup(id));
   }
 });
 
