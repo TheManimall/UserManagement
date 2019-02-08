@@ -5,8 +5,8 @@ const userInfoReducer = (state = { user: {}, groups: [] }, action) => {
     case types.GET_USER_INFO:
       return {
         ...state,
-        user: action.user,
-        groups: action.group,
+        user: action.payload.user,
+        groups: action.payload.group,
       };
     default:
       return {

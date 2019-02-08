@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 
-import { deleteUser, getUserInfo } from '../actions/action';
+import { userInfoOperations } from './duck';
 import UserInfoComponent from './UserInfoComponent';
 import GroupListComponent from './GroupListComponent';
 
@@ -49,10 +49,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onDeleteUser: (id) => {
-    dispatch(deleteUser(id));
+    dispatch(userInfoOperations.deleteUser(id));
   },
   getUser: (id) => {
-    dispatch(getUserInfo(id));
+    dispatch(userInfoOperations.getUserInfo(id));
   },
 });
 
