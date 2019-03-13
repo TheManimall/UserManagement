@@ -2,7 +2,7 @@ import types from './types';
 import { addGroupTypes } from '../../AddGroup/duck';
 import { searchTypes } from '../../Search/duck';
 
-const groupReducer = (state = { groups: [] }, action) => {
+const groupReducer = (state = { groups: [], searchGroups: [] }, action) => {
   switch (action.type) {
     case types.GET_GROUP:
       return {
@@ -25,11 +25,12 @@ const groupReducer = (state = { groups: [] }, action) => {
     case searchTypes.SEARCH_GROUP:
       return {
         ...state,
-        searchUsers: state.users.filter((el) => {
+        searchGroups: state.groups.filter((el) => {
           const gName = el.groupName.toLowerCase();
           const value = action.payload.toLowerCase();
           return (gName.includes(value));
         }),
+        groups: state.groups,
       };
 
     default:

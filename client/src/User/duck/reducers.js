@@ -23,11 +23,12 @@ const userReducer = (state = { users: [], searchUsers: [] }, action) => {
       return {
         ...state,
         searchUsers: state.users.filter((el) => {
-          const fName = el.firstName.toLowerCase();
-          const lName = el.lastName.toLowerCase();
-          const value = action.payload.toLowerCase();
+          let fName = el.firstName.toLowerCase();
+          let lName = el.lastName.toLowerCase();
+          let value = action.payload.toLowerCase();
           return (fName.includes(value) || lName.includes(value))
         }),
+        users: state.users,
       };
     default:
       return {

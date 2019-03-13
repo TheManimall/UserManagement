@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { userOperations } from './duck';
 import UserComponent from './UserComponent';
 import Search from '../Search/Search';
+import { searchActions } from '../Search/duck';
 
 class UserContainer extends Component {
   componentDidMount() {
@@ -11,11 +12,13 @@ class UserContainer extends Component {
   }
 
   render() {
-    const { user, onDeleteUser } = this.props;
+    const { user, onDeleteUser, searchUser } = this.props;
     let i = 0;
     return (
       <div className="container">
-        <Search />
+        <Search 
+          searchUser = { searchUser }
+        />
         {user.map((el) => {
           i++;
           return (
@@ -43,6 +46,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onDeleteUser: (id) => {
     dispatch(userOperations.deleteUser(id));
+  },
+  searchUser: (el) => {
+    dispatch(searchActions.searchUser(el));
   },
 });
 

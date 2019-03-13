@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import GroupComponent from './GroupComponent';
 import Search from '../Search/Search';
 import { groupOperations } from './duck';
+import { searchActions } from '../Search/duck';
 
 class GroupContainer extends Component {
   componentDidMount() {
@@ -11,11 +12,13 @@ class GroupContainer extends Component {
   }
 
   render() {
-    const { groups, onDeleteGroup } = this.props;
+    const { groups, onDeleteGroup, searchGroup } = this.props;
     let i = 0;
     return (
       <div className="container">
-        <Search />
+        <Search 
+          searchGroup={searchGroup}
+        />
         {groups.map((el) => {
           i++;
           return (
@@ -44,6 +47,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onDeleteGroup: (id) => {
     dispatch(groupOperations.deleteGroup(id));
+  },
+  searchGroup: (el) => {
+    dispatch(searchActions.searchGroup(el));
   },
 });
 
