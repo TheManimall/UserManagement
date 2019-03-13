@@ -12,26 +12,44 @@ class GroupContainer extends Component {
   }
 
   render() {
-    const { groups, onDeleteGroup, searchGroup } = this.props;
+    const { groups, onDeleteGroup, searchGroup, searchGroups, isSearch } = this.props;
     let i = 0;
+    let j = 0;
+
+    const main = groups.map((el) => {
+      i++;
+      return (
+        <GroupComponent
+          i={i}
+          group={el}
+          key={el._id}
+          groupName={el.groupName}
+          id={el._id}
+          onDeleteGroup={onDeleteGroup}
+        />
+      );
+    });
+
+    const search = searchGroups.map((el) => {
+      j++;
+      return (
+        <GroupComponent
+          i={j}
+          group={el}
+          key={el._id}
+          groupName={el.groupName}
+          id={el._id}
+          onDeleteGroup={onDeleteGroup}
+        />
+      );
+    });
+
     return (
       <div className="container">
         <Search 
           searchGroup={searchGroup}
         />
-        {groups.map((el) => {
-          i++;
-          return (
-            <GroupComponent
-              i={i}
-              group={el}
-              key={el._id}
-              groupName={el.groupName}
-              id={el._id}
-              onDeleteGroup={onDeleteGroup}
-            />
-          );
-        })}
+        {isSearch ? search : main }
       </div>
     );
   }
@@ -39,6 +57,8 @@ class GroupContainer extends Component {
 
 const mapStateToProps = state => ({
   groups: state.group.groups,
+  isSearch: state.group.isSearch,
+  searchGroups: state.group.searchGroups,
 });
 
 const mapDispatchToProps = dispatch => ({

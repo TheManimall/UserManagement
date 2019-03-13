@@ -2,7 +2,7 @@ import types from './types';
 import { addUserTypes } from '../../AddUser/duck';
 import { searchTypes } from '../../Search/duck';
 
-const userReducer = (state = { users: [], searchUsers: [] }, action) => {
+const userReducer = (state = { users: [], searchUsers: [], isSearch: false }, action) => {
   switch (action.type) {
     case types.GET_USER:
       return {
@@ -28,6 +28,7 @@ const userReducer = (state = { users: [], searchUsers: [] }, action) => {
           let value = action.payload.toLowerCase();
           return (fName.includes(value) || lName.includes(value))
         }),
+        isSearch: true,
         users: state.users,
       };
     default:
