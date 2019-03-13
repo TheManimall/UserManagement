@@ -14,7 +14,8 @@
     "body-parse": "^0.1.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mongoose": "^5.3.7"
+    "mongoose": "^5.3.7",
+    "node-sass": "^4.11.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",

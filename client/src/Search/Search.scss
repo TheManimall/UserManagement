@@ -1,0 +1,20 @@
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+  margin: 0 0 10px 0;
+  
+
+  input {
+    height: 48px;
+    width: 40%;
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+  }
+
+}

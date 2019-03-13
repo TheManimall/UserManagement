@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { userOperations } from './duck';
 import UserComponent from './UserComponent';
+import Search from '../Search/Search';
 
 class UserContainer extends Component {
   componentDidMount() {
@@ -14,6 +15,7 @@ class UserContainer extends Component {
     let i = 0;
     return (
       <div className="container">
+        <Search />
         {user.map((el) => {
           i++;
           return (

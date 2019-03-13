@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import './App.css';
+import './App.scss';
 import UserContainer from './User/UserContainer';
 import NavBar from './NavBar/NavBar';
 import AddUserContainer from './AddUser/AddUserContainer';
