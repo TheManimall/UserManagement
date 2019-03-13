@@ -26,7 +26,7 @@ const groupReducer = (state = { groups: [] }, action) => {
       return {
         ...state,
         searchUsers: state.users.filter((el) => {
-          const gName = el.firstName.toLowerCase();
+          const gName = el.groupName.toLowerCase();
           const value = action.payload.toLowerCase();
           return (gName.includes(value));
         }),

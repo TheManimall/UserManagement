@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import GroupComponent from './GroupComponent';
+import Search from '../Search/Search';
 import { groupOperations } from './duck';
 
 class GroupContainer extends Component {
@@ -14,6 +15,7 @@ class GroupContainer extends Component {
     let i = 0;
     return (
       <div className="container">
+        <Search />
         {groups.map((el) => {
           i++;
           return (
