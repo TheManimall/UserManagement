@@ -69,6 +69,7 @@ class AddUserComponent extends Component {
               name='firstName'
               onChange={this.handleInputChange}
               value={this.state.firstName}
+              autoFocus
             />
             <TextField
               label="Last Name"
@@ -99,7 +100,7 @@ class AddUserComponent extends Component {
 }
 
 AddUserComponent.propTypes = {
-  onAddUser: PropTypes.func
+  onAddUser: PropTypes.func.isRequired
 };
  
 export default AddUserComponent;

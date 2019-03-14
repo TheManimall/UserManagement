@@ -13,9 +13,10 @@ class Search extends Component {
           type="text" 
           placeholder="Search" 
           onChange={(e) => search(e.target.value)}
+          autoFocus
         />
       </div> 
-    );
+    );  
   }
 }
 
