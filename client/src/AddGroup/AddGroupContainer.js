@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
 
 AddGroupContainer.propTypes = {
   // eslint-disable-next-line react/require-default-props
-  onAddGroup: PropTypes.func,
+  onAddGroup: PropTypes.func.isRequired,
 };
 
 export default connect(

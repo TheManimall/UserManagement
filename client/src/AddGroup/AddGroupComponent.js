@@ -40,6 +40,7 @@ class AddGroupComponent extends Component {
               onChange={this.handleInputChange}
               value={this.state.groupName}
               name='groupName'
+              autoFocus
             />
             <Button
               variant="contained"
@@ -56,7 +57,7 @@ class AddGroupComponent extends Component {
 }
 
 AddGroupComponent.propTypes = {
-  onAddGroup: PropTypes.func,
+  onAddGroup: PropTypes.func.isRequired,
 };
 
 export default AddGroupComponent;

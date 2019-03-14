@@ -80,7 +80,7 @@ GroupContainer.propTypes = {
   groups: PropTypes.arrayOf(PropTypes.object),
   isSearch: PropTypes.bool,
   searchGroups: PropTypes.arrayOf(PropTypes.object),
-  getGroups: PropTypes.func,
+  getGroups: PropTypes.func.isRequired,
   onDeleteGroup: PropTypes.func,
   searchGroup: PropTypes.func,
 };
