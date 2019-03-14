@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 class AddUserToGroup extends Component {
 
@@ -60,5 +61,9 @@ class AddUserToGroup extends Component {
     );
   }
 }
+
+AddUserToGroup.propTypes = {
+  onAddUserToGroup: PropTypes.func,
+};
 
 export default AddUserToGroup;

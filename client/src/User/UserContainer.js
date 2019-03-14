@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { userOperations } from './duck';
 import UserComponent from './UserComponent';
 import Search from '../Search/Search';
 import { searchActions } from '../Search/duck';
-import { join } from 'path';
 
 class UserContainer extends Component {
   componentDidMount() {
-    this.props.getUsers();
+    const { getUsers } = this.props;
+
+    getUsers();
   }
 
   render() {
@@ -18,7 +20,7 @@ class UserContainer extends Component {
     let j = 0;
 
     const main = user.map((el) => {
-      i++;
+      i += 1;
       return (
         <UserComponent
           key={el._id}
@@ -34,7 +36,7 @@ class UserContainer extends Component {
 
     const search = searchUsers.map((el) => {
       // eslint-disable-next-line no-plusplus
-      j++;
+      j += 1;
       return (
         <UserComponent
           key={el._id}
@@ -77,5 +79,14 @@ const mapStateToProps = state => ({
   searchUsers: state.user.searchUsers,
   isSearch: state.user.isSearch,
 });
+
+UserContainer.propTypes = {
+  user: PropTypes.arrayOf(PropTypes.object),
+  searchUsers: PropTypes.arrayOf(PropTypes.object),
+  isSearch: PropTypes.bool,
+  getUsers: PropTypes.func,
+  onDeleteUser: PropTypes.func,
+  searchUser: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserContainer);

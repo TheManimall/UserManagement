@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
+import PropTypes from 'prop-types';
 
 import { userInfoOperations } from './duck';
 import UserInfoComponent from './UserInfoComponent';
@@ -16,6 +17,7 @@ class UserInfoContainer extends Component {
 
   render() {
     const { user, onDeleteUser, group } = this.props;
+
     return (
       <div className="container">
         <Card className="add-user">
@@ -55,5 +57,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(userInfoOperations.getUserInfo(id));
   },
 });
+
+UserInfoContainer.propTypes = {
+  user: PropTypes.arrayOf(PropTypes.object),
+  group: PropTypes.arrayOf(PropTypes.object),
+  onDeleteUser: PropTypes.func,
+  getUser: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfoContainer);

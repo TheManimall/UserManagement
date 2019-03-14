@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import GroupComponent from './GroupComponent';
 import Search from '../Search/Search';
@@ -8,8 +9,10 @@ import { searchActions } from '../Search/duck';
 
 class GroupContainer extends Component {
   componentDidMount() {
-    this.props.getGroups();
-  }
+    const { getGroups } = this.props;
+
+    getGroups();
+  };
 
   render() {
     const { groups, onDeleteGroup, searchGroup, searchGroups, isSearch } = this.props;
@@ -17,7 +20,7 @@ class GroupContainer extends Component {
     let j = 0;
 
     const main = groups.map((el) => {
-      i++;
+      i += 1;
       return (
         <GroupComponent
           i={i}
@@ -31,7 +34,7 @@ class GroupContainer extends Component {
     });
 
     const search = searchGroups.map((el) => {
-      j++;
+      j += 1;
       return (
         <GroupComponent
           i={j}
@@ -72,5 +75,14 @@ const mapDispatchToProps = dispatch => ({
     dispatch(searchActions.searchGroup(el));
   },
 });
+
+GroupContainer.propTypes = {
+  groups: PropTypes.arrayOf(PropTypes.object),
+  isSearch: PropTypes.bool,
+  searchGroups: PropTypes.arrayOf(PropTypes.object),
+  getGroups: PropTypes.func,
+  onDeleteGroup: PropTypes.func,
+  searchGroup: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupContainer);

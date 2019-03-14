@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from 'react-select';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -48,7 +49,7 @@ class AddUserComponent extends Component {
 
   render() { 
     const { group } = this.props;
-    const { groupId, selectedOption } = this.state
+    const { selectedOption } = this.state
 
     const options = group.map((el) => {
       return ({
@@ -96,5 +97,9 @@ class AddUserComponent extends Component {
     );
   }
 }
+
+AddUserComponent.propTypes = {
+  onAddUser: PropTypes.func
+};
  
 export default AddUserComponent;
