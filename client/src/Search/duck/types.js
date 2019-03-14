@@ -1,0 +1,3 @@
+const SEARCH_USER = 'SEARCH_USER';
+const SEARCH_GROUP = 'SEARCH_GROUP';
+export default { SEARCH_USER, SEARCH_GROUP };
