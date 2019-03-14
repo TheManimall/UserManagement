@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class GroupComponent extends Component {
   render() {
@@ -32,5 +33,12 @@ class GroupComponent extends Component {
     );
   }
 }
+
+GroupComponent.propTypes = {
+  groupName: PropTypes.string,
+  id: PropTypes.string,
+  onDeleteGroup: PropTypes.func,
+  i: PropTypes.number,
+};
 
 export default GroupComponent;

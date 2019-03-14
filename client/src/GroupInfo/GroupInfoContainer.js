@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
+import PropTypes from 'prop-types';
 
 import GroupInfoComponent from './GroupInfoComponent';
 import AddUserToGroup from './AddUserToGroup';
@@ -80,5 +81,15 @@ const mapDispatchToProps = dispatch => ({
     dispatch(groupInfoOperations.removeUserFromGroup(id));
   }
 });
+
+GroupInfoContainer.propTypes = {
+  group: PropTypes.arrayOf(PropTypes.object),
+  user: PropTypes.arrayOf(PropTypes.object),
+  userInGroup: PropTypes.arrayOf(PropTypes.object),
+  onDeleteGroup: PropTypes.func,
+  getGroup: PropTypes.func,
+  onAddUserToGroup: PropTypes.func,
+  removeUser: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupInfoContainer);

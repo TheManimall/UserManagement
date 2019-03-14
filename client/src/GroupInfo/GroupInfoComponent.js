@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 class GroupInfo extends Component {
   render() { 
@@ -22,5 +23,10 @@ class GroupInfo extends Component {
   }
 }
 
+GroupInfo.propTypes = {
+  groupName: PropTypes.string,
+  id: PropTypes.number,
+  onDeleteGroup: PropTypes.func,
+};
 
 export default GroupInfo;

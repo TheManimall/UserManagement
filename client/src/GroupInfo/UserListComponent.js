@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Clear from '@material-ui/icons/Clear';
 import { Link } from 'react-router-dom';
-import IconButton from '@material-ui/core/IconButton';
+import PropTypes from 'prop-types';
 
 class UserListComponent extends Component {
   render() {
@@ -18,5 +18,12 @@ class UserListComponent extends Component {
     );
   }
 }
+
+UserListComponent.propTypes = {
+  fullName: PropTypes.string,
+  id: PropTypes.string,
+  remove: PropTypes.func,
+  removeUser: PropTypes.func,
+};
  
 export default UserListComponent;

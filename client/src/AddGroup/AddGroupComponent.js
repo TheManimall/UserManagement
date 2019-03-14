@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import AddGroupContainer from './AddGroupContainer';
 
 class AddGroupComponent extends Component {
 
@@ -54,5 +54,9 @@ class AddGroupComponent extends Component {
     );
   }
 }
+
+AddGroupComponent.propTypes = {
+  onAddGroup: PropTypes.func,
+};
 
 export default AddGroupComponent;

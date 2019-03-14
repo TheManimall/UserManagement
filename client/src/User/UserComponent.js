@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 class UserComponent extends Component {
   render() {
     const {
-      firstName, lastName, nickname, id, onDeleteUser, i,
+      firstName, lastName, id, onDeleteUser, i,
     } = this.props;
     return (
       <Card className="user-card">
@@ -41,7 +41,6 @@ UserComponent.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   i: PropTypes.number,
-  nickname: PropTypes.string,
   id: PropTypes.string,
   onDeleteUser: PropTypes.func,
 };
