@@ -46,3 +46,23 @@ describe('actions', () => {
     expect(actions.addUserToGroupSuccess(user)).toEqual(expectedAction);
   });
 });
+
+describe('actions', () => {
+  it('should create an action to remove user from group', () => {
+
+    const user = { 
+      groupId: ['group id test1', 'group id test1'], 
+      _id: 'testId1',
+      firstName: 'TestName1',
+      lastName: 'TestLastName1',
+    };
+
+
+    const expectedAction = {
+      type: types.REMOVE_USER_FROM_GROUP,
+      payload: user,
+    };
+
+    expect(actions.removeUserFromGroupSuccess(user)).toEqual(expectedAction);
+  });
+});
