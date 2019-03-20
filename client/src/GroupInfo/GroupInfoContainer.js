@@ -83,11 +83,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 GroupInfoContainer.propTypes = {
-  group: PropTypes.arrayOf(PropTypes.object),
+  group: PropTypes.object,
   user: PropTypes.arrayOf(PropTypes.object),
   userInGroup: PropTypes.arrayOf(PropTypes.object),
   onDeleteGroup: PropTypes.func,
-  getGroup: PropTypes.func,
+  getGroup: PropTypes.func.isRequired,
   onAddUserToGroup: PropTypes.func,
   removeUser: PropTypes.func,
 };

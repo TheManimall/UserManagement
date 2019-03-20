@@ -84,7 +84,7 @@ UserContainer.propTypes = {
   user: PropTypes.arrayOf(PropTypes.object),
   searchUsers: PropTypes.arrayOf(PropTypes.object),
   isSearch: PropTypes.bool,
-  getUsers: PropTypes.func,
+  getUsers: PropTypes.func.isRequired,
   onDeleteUser: PropTypes.func,
   searchUser: PropTypes.func,
 };

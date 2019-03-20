@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Creators from './actions';
 
-const addGroupSuccess = Creators.addGroupSuccess;
+const { addGroupSuccess } = Creators;
 
 const addGroup = ({ groupName }) => dispatch => axios.post('/api/group', { groupName })
   .then((response) => {
