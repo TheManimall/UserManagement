@@ -25,7 +25,7 @@ class GroupInfo extends Component {
 
 GroupInfo.propTypes = {
   groupName: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   onDeleteGroup: PropTypes.func,
 };
 
